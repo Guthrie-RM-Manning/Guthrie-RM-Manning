@@ -1,0 +1,10 @@
+#standard format for XML query
+<QueryList>
+  <Query Id="0" Path="Microsoft-Windows-Sysmon/Operational">
+    <Select Path="Microsoft-Windows-Sysmon/Operational">
+      #to change the event ID number, you simply edit what follows after EventID in this
+      #To change the Process ID number, you would change what follows after the = sign in and ensure its in '' 
+      *[System[(EventID=7)]] and *[EventData[Data[@Name='ProcessId'] = '2364']]
+    </Select>
+  </Query>
+</QueryList>
