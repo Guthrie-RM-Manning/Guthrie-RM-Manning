@@ -1,0 +1,35 @@
+#key fields here are $folderPath = "_______", $_.Message -like "________" - must use quotes if space in the folder path
+
+#First you need to set the path to the folder with your .evtx Files (Keep quotes in place)
+$folderPath = "YOUR_FOLDER_PATH"
+
+#Then you need to get all the .evtx files in the folder (using Get-ChildItem) 
+$evtxFiles = Get-ChildItem -Path $folderPath -Filter *.evtx
+
+#create an array in order to store the paths of multiple files containing a match, if applicable
+$matchingFiles = @()
+
+#Iterate through each .evtx file in the folder
+foreach ($file in $evtxFiles) {
+  #search for the event containing the field in question (in this instance we are looking for a "\\*\PRINT" in the CommandLine)
+ $matches = Get-WinEvent -Path $file.FullName |
+    Where-Object { $_.Message -like "\\*\Print*" } |
+    Select-Object TimeCreated, Id, Message, @{Name='File';Expression={$file.FullName}}
+
+  #if you find the match, tell me the file path
+  if ($matches) {
+    $matchingEvents += $matches
+  }
+}
+
+#Check for matches
+if ($matchingEvents) {
+  #iterate through each matching event and have it display some of the details to find the releveant details quicker
+  foreach ($match in $matchingEvents) {
+    Write-Output "Match found in file: $($match.File)"
+    $match | Format-Table -AutoSize
+    Write-Host "----------------"
+    }
+}  else {
+    Write-Output "No match found." 
+}
