@@ -6,7 +6,7 @@
 - 📫 How to reach me email: guthrie.manning727@gmail.com or LinkedIn: https://www.linkedin.com/in/guthrie-rm-manning/
 - 😄 Pronouns: He/Him/His
 - ⚡ Fun fact: I am ridicuously knowledgeable of all-things coffee - spent years in the specialty coffee industry and have tried most coffee varietials on the market and beans from most countries which grow coffee. 
-
+- This GitHub is a WIP intended to store scripts, concepts, and links to other resources I can utilize for various activities.
 <!---
 Guthrie-RM-Manning/Guthrie-RM-Manning is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
